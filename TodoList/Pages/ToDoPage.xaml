@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TodoList.Pages.ToDoPage"
              Title="ToDoPage"
-             xmlns:helpers="clr-namespace:TodoList.Helpers">
+             xmlns:helpers="clr-namespace:TodoList.Helpers"
+             xmlns:local="clr-namespace:TodoList.ViewModels">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add">
+        <ToolbarItem Text="Add" Command="{Binding AbrirRegistroCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="MaterialDesignIcons"
                                  Glyph="{x:Static helpers:MaterialIconHelper.Plus}"
@@ -14,10 +15,26 @@
             </ToolbarItem.IconImageSource> 
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    
+    
+    <RefreshView IsRefreshing="{Binding IsRefresh}"
+                 Command="{Binding AgregarTareasCommand}">
+        <CollectionView
+            x:Name="Tasks"
+            ItemsSource="{Binding Tareas}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Padding="10">
+                        <Label
+                            Text="{Binding Titulo}"
+                            FontAttributes="Bold" />
+                        <Label
+                            Text="{Binding Descripcion}"
+                            FontAttributes="Italic"
+                            VerticalOptions="End" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
 </ContentPage>
