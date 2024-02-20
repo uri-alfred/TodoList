@@ -33,7 +33,7 @@ namespace TodoList.ViewModels
         [RelayCommand]
         private void StartApp()
         {
-            Shell.Current.GoToAsync(nameof(RegistroTareaPage));
+            Shell.Current.GoToAsync(nameof(ToDoPage));
         }
     }
 }
