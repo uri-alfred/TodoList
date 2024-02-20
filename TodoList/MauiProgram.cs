@@ -12,8 +12,10 @@ namespace TodoList
             var builder = MauiApp.CreateBuilder();
             // inyeccion de dependencias
             builder.Services.AddSingleton<FakeTaskService>();
-            builder.Services.AddSingleton<RegistroTareaPage>();
-            builder.Services.AddSingleton<RegistroTareaViewModel>();
+            builder.Services.AddTransient<RegistroTareaPage>();
+            builder.Services.AddTransient<RegistroTareaViewModel>();
+            builder.Services.AddTransient<ToDoPage>();
+            builder.Services.AddTransient<TodoviewModel>();
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
