@@ -26,7 +26,8 @@ namespace TodoList.ViewModels
         [RelayCommand]
         private void Guardar()
         {
-            fakeService.AddTask(tarea);
+            fakeService.AddTask(Tarea);
+            Shell.Current.GoToAsync("..");
         }
     }
 }
