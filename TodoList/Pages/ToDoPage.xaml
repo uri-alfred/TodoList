@@ -21,8 +21,12 @@
         IsRefreshing="{Binding IsRefresh}"
         Command="{Binding AgregarTareasCommand}">
         <CollectionView
-            x:Name="Tasks"
-            ItemsSource="{Binding Tareas}">
+            ItemsSource="{Binding Tareas}"
+            SelectionMode="Single"
+            SelectedItem="{Binding TareaSeleccionada}"
+            SelectionChangedCommand="{Binding EditarRegistroCommand}"
+            SelectionChangedCommandParameter="{Binding Path=SelectedItem, Source={RelativeSource Self}}">
+            
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout Padding="10">
@@ -36,6 +40,7 @@
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            
         </CollectionView>
     </RefreshView>
 </ContentPage>
