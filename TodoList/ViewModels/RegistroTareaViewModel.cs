@@ -15,9 +15,9 @@ namespace TodoList.ViewModels
         [ObservableProperty]
         private Tarea tarea;
 
-        private FakeTaskService fakeService;
+        private IDataService fakeService;
         
-        public RegistroTareaViewModel(FakeTaskService service)
+        public RegistroTareaViewModel(IDataService service)
         {
             tarea = new Tarea();
             fakeService = service;

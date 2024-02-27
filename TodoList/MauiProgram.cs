@@ -10,8 +10,11 @@ namespace TodoList
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
-            // inyeccion de dependencias
-            builder.Services.AddSingleton<FakeTaskService>();
+            // inyeccion de dependencias // IDataService, 
+            #if DEBUG
+            builder.Services.AddSingleton<IDataService, FakeTaskService>();
+            builder.Services.AddSingleton<IDataService, FirebaseDataService>();
+            #endif
             builder.Services.AddTransient<RegistroTareaPage>();
             builder.Services.AddTransient<RegistroTareaViewModel>();
             builder.Services.AddTransient<ToDoPage>();

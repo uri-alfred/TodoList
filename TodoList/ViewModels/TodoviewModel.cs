@@ -15,7 +15,7 @@ namespace TodoList.ViewModels
     public partial class TodoviewModel : ObservableObject
     {
         public ObservableCollection<Tarea> Tareas { get; set; }
-        private FakeTaskService fakeService;
+        private IDataService fakeService;
 
         [ObservableProperty]
         private Tarea tareaSeleccionada;
@@ -23,7 +23,7 @@ namespace TodoList.ViewModels
         [ObservableProperty]
         private bool isRefresh;
 
-        public TodoviewModel(FakeTaskService service)
+        public TodoviewModel(IDataService service)
         {
             Tareas = new ();
             fakeService = service;

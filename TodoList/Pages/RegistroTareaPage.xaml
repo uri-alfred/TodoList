@@ -2,39 +2,78 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TodoList.Pages.RegistroTareaPage"
-             Title="RegistroTareaPage">
-    <VerticalStackLayout>
+             Title="Tarea">
+
+    
+    <VerticalStackLayout
+        Margin="20,0">
         <Label 
             Text="Nueva Tarea"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            FontSize="24"
+            TextColor="DarkBlue"
+            Margin="0,20"/>
         <Entry
             Placeholder="Titulo"
             VerticalOptions="StartAndExpand"
-            HorizontalOptions="StartAndExpand"
+            HorizontalOptions="FillAndExpand"
+            Margin="10,0"
+            FontSize="16"
             Text="{Binding Tarea.Titulo}"
             ></Entry>
         <Entry
             Placeholder="Descripción"
             VerticalOptions="StartAndExpand"
-            HorizontalOptions="StartAndExpand"
+            HorizontalOptions="FillAndExpand"
+            Margin="10,0"
+            FontSize="16"
             Text="{Binding Tarea.Descripcion}"
             ></Entry>
         <DatePicker
             Date="{Binding Tarea.FechaInicial}"
             VerticalOptions="StartAndExpand"
-            HorizontalOptions="StartAndExpand"
+            HorizontalOptions="FillAndExpand"
+            Margin="10,0"
+            FontSize="16"
             ></DatePicker>
         <DatePicker
             Date="{Binding Tarea.FechaFinal}"
             VerticalOptions="StartAndExpand"
-            HorizontalOptions="StartAndExpand"
+            HorizontalOptions="FillAndExpand"
+            Margin="10,0"
+            FontSize="16"
             ></DatePicker>
+        
+        <Picker Title="Selecciona una opción">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Opción 1</x:String>
+                    <x:String>Opción 2</x:String>
+                    <x:String>Opción 3</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Entry
+            Placeholder="Url"
+            VerticalOptions="StartAndExpand"
+            HorizontalOptions="FillAndExpand"
+            Margin="10,0"
+            FontSize="16"
+            Text="{Binding Tarea.URL}"
+            ></Entry>
+
+
         <Button
             Text="Registrar Tarea"
             Command="{Binding GuardarCommand}"
             VerticalOptions="StartAndExpand"
-HorizontalOptions="StartAndExpand"
+            HorizontalOptions="FillAndExpand"
+            Background="LightBlue"
+            TextColor="White"
+            Margin="10,20"
+            FontSize="18"
             ></Button>
     </VerticalStackLayout>
 </ContentPage>

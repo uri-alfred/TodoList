@@ -7,12 +7,20 @@ using TodoList.Models;
 
 namespace TodoList.Services
 {
-    public class FakeTaskService
+    public class FakeTaskService : IDataService
     {
         public List<Tarea> Tasks { get; set; }
         public FakeTaskService()
         {
-            Tasks = new();
+            Tasks = [];
+            for (int i = 1; i <= 10; i++)
+            {
+                Tasks.Add(new()
+                {
+                    Titulo = $"Tarea {i}",
+                    Descripcion = $"Tarea autogenerada {i}"
+                });
+            }
         }
         public void AddTask(Tarea tarea)
         {
