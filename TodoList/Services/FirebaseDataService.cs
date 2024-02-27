@@ -23,9 +23,9 @@ namespace TodoList.Services
                 .Subscribe( item => Tasks.Add(item.Object));
         }
 
-        public void AddTask(Tarea tarea)
+        public async Task AddTask(Tarea tarea)
         {
-            firebaseClient.Child("Todo").PostAsync(tarea);
+            await firebaseClient.Child("Todo").PostAsync(tarea);
         }
 
         public List<Tarea> GetTasks()

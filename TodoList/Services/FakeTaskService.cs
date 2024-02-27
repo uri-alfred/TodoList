@@ -22,7 +22,7 @@ namespace TodoList.Services
                 });
             }
         }
-        public void AddTask(Tarea tarea)
+        public async Task AddTask(Tarea tarea)
         {
             Tasks.Add(tarea);
         }
