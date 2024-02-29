@@ -9,7 +9,7 @@ using TodoList.Models.Encuestas;
 
 namespace TodoList.Services
 {
-    internal class SQLiteDataService : IDataService
+    public class SQLiteDataService : IDataService
     {
         public List<Tarea> Tasks { get; set; }
         public const string DatabaseFilename = "MI_DB_TODO2.db";
