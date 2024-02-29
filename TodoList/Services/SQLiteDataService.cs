@@ -24,6 +24,7 @@ namespace TodoList.Services
         {
             Tasks = new List<Tarea>();
             dataBase = new SQLiteConnection(DatabasePath, Flags);
+
             dataBase.CreateTable<Pregunta>();
             dataBase.CreateTable<Respuesta>();
             dataBase.CreateTable<Encuesta>();
@@ -35,9 +36,10 @@ namespace TodoList.Services
             dataBase.Insert(tarea);
         }
 
-        public List<Tarea> GetTasks()
+        List<Tarea> IDataService.GetTasks()
         {
-            throw new NotImplementedException();
+            Tasks = dataBase.Table<Tarea>().ToList();
+            return Tasks;
         }
     }
 }
