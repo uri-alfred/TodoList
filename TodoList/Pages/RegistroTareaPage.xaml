@@ -2,8 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TodoList.Pages.RegistroTareaPage"
+             xmlns:local="clr-namespace:TodoList.Converters"
              Title="Tarea">
 
+    <ContentPage.Resources>
+        <local:IsTareaTipoEncuesta x:Key="isTareaTipoEncuesta" />
+    </ContentPage.Resources>
     
     <VerticalStackLayout
         Margin="20,0">
@@ -44,16 +48,12 @@
             Margin="10,0"
             FontSize="16"
             ></DatePicker>
-        
-        <Picker Title="Selecciona una opción">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Opción 1</x:String>
-                    <x:String>Opción 2</x:String>
-                    <x:String>Opción 3</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+
+        <Picker
+            x:Name="pikerTipo"
+            Title="Tipo de tarea"
+            ItemsSource="{Binding TiposTareas}"
+            ></Picker>
 
         <Entry
             Placeholder="Url"
@@ -64,13 +64,24 @@
             Text="{Binding Tarea.URL}"
             ></Entry>
 
+        <Button
+            Text="Agregar encuesta"
+            IsVisible="{Binding Source={x:Reference pikerTipo}, Path=SelectedIndex, Converter={StaticResource isTareaTipoEncuesta}}"
+            Command="{Binding AbrirRegistroEncuestaCommand}"
+            VerticalOptions="StartAndExpand"
+            HorizontalOptions="FillAndExpand"
+            Background="LightBlue"
+            TextColor="White"
+            Margin="10,20"
+            FontSize="18"
+            ></Button>  
 
         <Button
             Text="Registrar Tarea"
             Command="{Binding GuardarCommand}"
             VerticalOptions="StartAndExpand"
             HorizontalOptions="FillAndExpand"
-            Background="LightBlue"
+            Background="Blue"
             TextColor="White"
             Margin="10,20"
             FontSize="18"
